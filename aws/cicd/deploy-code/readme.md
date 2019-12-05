@@ -26,5 +26,5 @@ The make file included has commands to set your tf version, and fetch configs.
     * Make sure the s3path inside of this script is pointed correctly
 * fetch_metaschema.sh
     * This code script is ran in docker and used to grab your configs and schemas.
-    * modify between lines 22 and 23 to match your use case 
+    * modify between lines 22 and 23 to match your use case  
 
