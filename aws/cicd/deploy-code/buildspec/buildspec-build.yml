@@ -11,5 +11,11 @@ phases:
       - ls -a
 artifacts:
   files:
+    - build/**/*
+    - settings.json
+    - Makefile
+    - buildspec/**/*
+    - scripts/**/*
+    - .tfversion
 
 

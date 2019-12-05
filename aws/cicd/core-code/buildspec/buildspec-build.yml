@@ -11,4 +11,5 @@ artifacts:
     - release.sh
     - version
     - .tfversion
+    - tar.gz
 
