@@ -110,3 +110,7 @@ Each pipeline has a title, description, and stages.
         * **input**: same as above
         * **output**: same as above
         * **runOrder**: defines the order inwhich the actions should be ran, multiple actions can be set with the same run order value to run in parrallel otherwise actions are ran sequentially.
+        
+### TODOs
+ * integrate bitbucket codecommit sync
+ * ...
