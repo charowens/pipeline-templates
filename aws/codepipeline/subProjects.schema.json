@@ -1,0 +1,207 @@
+{
+  "definitions": {
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "output": {
+          "type": "string"
+        },
+        "runOrder": {
+          "type": "string"
+        }
+      }
+    },
+    "postBuildAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "type"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "runOrder": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["post-build"]
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computeType": {
+              "type": "string"
+            },
+            "privilegedMode": {
+              "type": "boolean"
+            }
+          }
+        },
+        "timeout": {
+          "type": "integer"
+        }
+      }
+    },
+    "actionStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actions", "title", "type"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "input": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["action"]
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/postBuildAction"
+              },
+              {
+                "$ref": "#/definitions/action"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "postBuildStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "type"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["post-build"]
+        },
+        "environment": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "computeType": {
+              "type": "string"
+            },
+            "privilegedMode": {
+              "type": "boolean"
+            }
+          }
+        },
+        "timeout": {
+          "type": "integer"
+        }
+      }
+    },
+    "singleActionStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "type"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "input": {
+          "type": "string"
+        },
+        "output": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["single-action"]
+        }
+      }
+    },
+    "approvalStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["approval"]
+        }
+      }
+    },
+    "buildStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["build"]
+        }
+      }
+    },
+    "subProject": {
+      "type": "object",
+      "required": ["title", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "stages": {
+          "type": "array",
+          "default": null,
+          "minItems": 1,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/definitions/buildStage"
+              },
+              {
+                "$ref": "#/definitions/approvalStage"
+              },
+              {
+                "$ref": "#/definitions/singleActionStage"
+              },
+              {
+                "$ref": "#/definitions/postBuildStage"
+              },
+              {
+                "$ref": "#/definitions/actionStage"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/subProject"
+  }
+}

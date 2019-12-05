@@ -1,0 +1,109 @@
+[
+  {
+    "title": "Core Code",
+    "description": "Core Code Test, Build and Tag",
+    "stages": [
+      {
+        "type": "build"
+      },
+      {
+        "type": "action",
+        "title": "coreTest",
+        "input": "buildPackage",
+        "actions": [
+          {
+            "title": "plan",
+            "type": "post-build",
+            "runOrder": "1"
+          },
+          {
+            "title": "deploy",
+            "type": "post-build",
+            "runOrder": "2"
+          },
+          {
+            "title": "acceptance",
+            "type": "post-build",
+            "runOrder": "3"
+          },
+          {
+            "title": "postAcceptance",
+            "type": "post-build",
+            "runOrder": "4"
+          }
+        ]
+      },
+      {
+        "type": "single-action",
+        "title": "Tag",
+        "input": "buildPackage",
+        "output": "versionedPackage"
+      },
+      {
+        "type": "action",
+        "title": "Deliver",
+        "actions": [
+          {
+            "title": "Deliver",
+            "inputs": [
+              "versionedPackage"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Deploy",
+    "description": "Environment Deploy Configuration",
+    "stages": [
+      {
+        "type": "build"
+      },
+      {
+        "type": "single-action",
+        "title": "QA Plan",
+        "input": "buildPackage",
+        "output": "qaPlan"
+      },
+      {
+        "type": "approval",
+        "title": "QA Plan Approval"
+      },
+      {
+        "type": "post-build",
+        "title": "QA Deploy",
+        "environment": {
+          "privilegedMode": true
+        }
+      },
+      {
+        "type": "single-action",
+        "title": "QA Acceptance",
+        "input": "buildPackage"
+      },
+      {
+        "type": "single-action",
+        "title": "Prod Plan",
+        "input": "buildPackage",
+        "output": "prodPlan"
+      },
+      {
+        "type": "approval",
+        "title": "Prod Approval"
+      },
+      {
+        "type": "post-build",
+        "title": "Prod Deploy",
+        "environment": {
+          "privilegedMode": true
+        }
+      },
+      {
+        "type": "single-action",
+        "title": "Prod Acceptance",
+        "input": "buildPackage"
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "deployRoleARN": "arn:aws:iam::XXXXXXXXXXXX:role/XXXXXXXXXXXX",
+  "projectName": "XXX",
+  "tfState": {
+    "bucket": "XXX-tfstate",
+    "region": "us-west-2"
+  },
+  "region": "us-west-2",
+  "s3Suffix": "deployment-info",
+  "accountId": "XXXXXXXXXXXX",
+  "assumableRoles": [
+    "arn:aws:iam::XXXXXXXXXXXX:role/XXXXXXXXXXXX"
+  ],
+  "applicationCode": "XXXXXXXXXXXX",
+  "applicationId": "XXXXXXXXXXXX",
+  "docker": {
+    "tag": "XXX-build",
+    "version": "1.0.13"
+  }
+}
