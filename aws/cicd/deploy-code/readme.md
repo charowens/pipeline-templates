@@ -27,4 +27,5 @@ The make file included has commands to set your tf version, and fetch configs.
 * fetch_metaschema.sh
     * This code script is ran in docker and used to grab your configs and schemas.
     * modify between lines 22 and 23 to match your use case  
+    
 
