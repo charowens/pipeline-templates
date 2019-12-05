@@ -13,5 +13,5 @@ Bootstrap a Native AWS Codepipeline to your application on AWS. This starter kit
 
 
 ### Deploy Code Readme 
-* [Veiw Readme](deploy-code/README.md)
+* [Veiw Readme](depl oy-code/README.md)
 
