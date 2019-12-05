@@ -1,0 +1,13 @@
+version: 0.2
+
+env:
+  variables:
+    ENVIRONMENT: core-test
+    INSTANCE_PREFIX: ccna
+
+phases:
+  build:
+    commands:
+      - ls -a
+      # - make cicd-build-acceptance
+      

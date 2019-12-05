@@ -1,0 +1,12 @@
+version: 0.2
+
+env:
+  variables:
+    ENVIRONMENT: 
+
+phases:
+  build:
+    commands:
+      - ls -a
+
+

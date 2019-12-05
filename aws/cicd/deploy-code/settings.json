@@ -1,0 +1,8 @@
+{
+    "qa":{
+        "version":"latest"
+    },
+    "prod":{
+        "version":"latest"
+    }   
+}

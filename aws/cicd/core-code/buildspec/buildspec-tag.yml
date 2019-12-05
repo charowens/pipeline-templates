@@ -1,0 +1,21 @@
+version: 0.2
+
+env:
+  variables:
+    GIT_REPO: ##CORE REPO
+    MAJOR_VESION: 1
+    MINOR_VESION: 0
+
+phases:
+  build:
+    commands:
+      - make tag -j
+
+artifacts:
+  files:
+    - tar.gz
+    - Makefile
+    - version
+    - release.sh
+    - buildspec/**/*
+    - .tfversion

@@ -1,0 +1,13 @@
+version: 0.2
+
+env:
+  variables:
+    RELEASE_BUCKET: ## RELASE BUCKET
+    GIT_REPO: https://git-codecommit.us-west-2.amazonaws.com/v1/repos/ ##DEPLOY REPO
+
+
+phases:
+  build:
+    commands:
+      - ls -a
+      - make deliver

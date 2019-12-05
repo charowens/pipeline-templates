@@ -1,0 +1,14 @@
+version: 0.2
+
+env:
+  variables:
+    RELEASE_BUCKET: ##
+    CORE_REPO: ## CORE CODE REPO
+    ENVIRONMENT: qa
+
+phases:
+  build:
+    commands:
+      - ls -a
+      # - make deploy
+

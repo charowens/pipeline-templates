@@ -1,0 +1,14 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+     
+artifacts:
+  files:
+    - Makefile
+    - version.sh
+    - release.sh
+    - version
+    - .tfversion
+
