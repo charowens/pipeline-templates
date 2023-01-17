@@ -40,7 +40,7 @@ fi
 echo 'Switching to new version:' $major_max'.'$minor_max'.'$patch_max
 source_version=$major_max.$minor_max.$patch_max
 echo $source_version > version
-git config --global user.email "codepipeline@coca-cola.com"
+git config --global user.email "codepipeline@yourorg.com"
 git tag -a $source_version -m "Version $source_version" origin/master
 
 echo 'Push tag to remote'

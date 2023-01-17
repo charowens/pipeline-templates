@@ -24,7 +24,7 @@ if [ -z "$(aws s3 ls $s3path)" ]; then
   echo "Copying to latest"
   git config --global credential.helper '!aws codecommit credential-helper $@'
   git config --global credential.UseHttpPath true
-  git config --global user.email "codepipline@coca-cola.com"
+  git config --global user.email "codepipline@yourorg.com"
   git clone $GIT_REPO repo
 
   echo $version > repo/latest
